@@ -1,0 +1,17 @@
+name: contrib--adenhq-hive
+organ: IV
+tier: contrib
+promotion_status: LOCAL
+produces:
+  - pr_to_adenhq_hive
+  - theory_extraction
+  - generative_artifacts
+  - public_narrative
+  - relationship_capital
+consumes:
+  - agentic_titan_patterns
+  - organvm_governance_rules
+  - hive_evolution_data
+subscriptions:
+  - product.release
+  - distribution.dispatched
