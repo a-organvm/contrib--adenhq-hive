@@ -1,0 +1,73 @@
+---
+title: Cross-Organ Symbiotic Contribution — ORGANVM × AdenHQ/Hive
+---
+flowchart TB
+    subgraph ORGAN_IV["ORGAN-IV (Taxis) — Conductor"]
+        J["journal/\nSession logs"]
+        S["seed.yaml\nProduces/consumes edges"]
+        P["plans/\nDesign spec + impl plan"]
+        F["repo/\nHive fork"]
+    end
+
+    subgraph ORGAN_I["ORGAN-I (Theoria) — Theory"]
+        T1["agent-design-lifecycle-algebra.md\nState machine isomorphism"]
+    end
+
+    subgraph ORGAN_II["ORGAN-II (Poiesis) — Generative"]
+        V1["State transition diagram"]
+        V2["Fusion architecture map"]
+    end
+
+    subgraph ORGAN_III["ORGAN-III (Ergon) — Shipped Code"]
+        C1["DesignVersion schema"]
+        C2["DesignVersionStore"]
+        C3["CLI: version-list, version-show"]
+        C4["DESIGN_VERSION_SAVED event"]
+        PR["PR #6707\nadenhq/hive"]
+    end
+
+    subgraph ORGAN_V["ORGAN-V (Logos) — Narrative"]
+        E["Essay:\nHow governance taught\nagents to version"]
+    end
+
+    subgraph HIVE["AdenHQ/Hive (External)"]
+        H1["evolution.md\nAgent evolution loop"]
+        H2["CheckpointStore\nExisting pattern"]
+        H3["EventBus\nPub/sub system"]
+    end
+
+    subgraph TITAN["agentic-titan (ORGAN-IV)"]
+        A1["StateSnapshot.verify()\nChecksum pattern"]
+        A2["AssemblyState\nTerritorialize/deterritorialize"]
+        A3["FissionFusionState\nCluster dynamics"]
+    end
+
+    %% ORGANVM → Hive flows
+    A1 -->|"integrity pattern"| C1
+    A2 -->|"lifecycle semantics"| T1
+    A3 -->|"evolution dynamics"| T1
+    T1 -->|"formalized into"| C1
+    C1 --> C2 --> C3
+    C4 --> PR
+    C3 --> PR
+    PR -->|"ships to"| HIVE
+
+    %% Hive → ORGANVM flows
+    H2 -->|"structural template"| C2
+    H3 -->|"integration point"| C4
+    H1 -->|"validates theory"| T1
+
+    %% Internal flows
+    J -->|"drives"| T1
+    T1 -->|"informs"| V1
+    T1 -->|"informs"| V2
+    PR -->|"story"| E
+    J -->|"feeds"| E
+
+    style ORGAN_IV fill:#2a4858,color:#fff
+    style ORGAN_I fill:#3a2858,color:#fff
+    style ORGAN_II fill:#583a28,color:#fff
+    style ORGAN_III fill:#285838,color:#fff
+    style ORGAN_V fill:#584828,color:#fff
+    style HIVE fill:#1a1a2e,color:#fff
+    style TITAN fill:#2e1a2e,color:#fff

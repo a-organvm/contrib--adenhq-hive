@@ -1,0 +1,23 @@
+---
+title: Agent Design Lifecycle State Machine
+---
+stateDiagram-v2
+    [*] --> DRAFT : Queen builds / Evolution regenerates
+
+    DRAFT --> CANDIDATE : GraphSpec.validate() clean
+    note right of DRAFT : Graph may be incomplete\nor structurally invalid
+
+    CANDIDATE --> VALIDATED : ≥1 session success=True
+    CANDIDATE --> ARCHIVED : Abandoned
+
+    note right of CANDIDATE : Built, awaiting\nexecution evidence
+
+    VALIDATED --> PROMOTED : User stars / approves
+    note right of VALIDATED : Automated gate passed\nAwaiting human judgment
+
+    PROMOTED --> ARCHIVED : Superseded by newer PROMOTED
+    note right of PROMOTED : "The good version"\nIntegrity-checksummed
+
+    note right of ARCHIVED : Preserved for rollback\nNever deleted
+
+    ARCHIVED --> [*]
